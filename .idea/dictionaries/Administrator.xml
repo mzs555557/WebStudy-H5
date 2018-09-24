@@ -2,6 +2,7 @@
   <dictionary name="Administrator">
     <words>
       <w>ondragover</w>
+      <w>ondrop</w>
     </words>
   </dictionary>
 </component>

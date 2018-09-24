@@ -14,21 +14,36 @@
         li {
             list-style-type: none;
         }
+
+        #box {
+            width: 300px;
+            height: 200px;
+            margin: 30px auto;
+            background-color: aquamarine;
+        }
     </style>
 </head>
-
-
-
 <body>
-
-
-    <div id="box" draggable="true"></div>
-    <script>
-        const box = document.querySelector('div');
-        box.ondragover = function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-        }
-    </script>
+<div id="box" draggable="true"></div>
+<script>
+    const box = document.querySelector('div');
+    box.ondragover = function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+    };
+    box.ondrop = function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log(
+            console.log(
+                e.dataTransfer.files[0].name,
+                e.dataTransfer.files[0].type,
+                e.dataTransfer.files[0].lastModified,
+                e.dataTransfer.files[0].lastModifiedDate.toLocaleDateString(),
+                e.dataTransfer.files[0].lastModifiedDate.toLocaleTimeString()
+            )
+        );
+    }
+</script>
 </body>
 </html>
