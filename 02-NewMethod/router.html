@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link href="http://moonbuy.cn/mall/static/images/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        body{
+            background-color: #ff0000;
+            display: flex;
+            overflow: hidden;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        #box{
+            width: 800px;
+            height: 400px;
+            border: 1px solid #fff;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        #list{
+            width: 170px;
+            height: 200px;
+            border: 1px solid #fff;
+            text-align: center;
+        }
+        li{
+            line-height: 35px;
+            border-bottom: 1px solid #fff;
+            cursor: pointer;
+        }
+        #con{
+            width: 550px;
+            height: 200px;
+            border: 1px solid #fff;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="<">
+<input type="button" value=">">
+<div id="box">
+    <ul id="list"></ul>
+    <div id="con"></div>
+</div>
+<script src="data.js"></script>
+<script>
+    // 数据先行
+    let str = '';
+    for ( let key in data ){
+        str += '<li data-name="'+key+'">'+key+'</li>';
+    }
+    list.innerHTML = str;
+
+    let li = document.querySelectorAll('li');
+
+    // 框架里面用的 es6 属性 函数 用不了多少
+    li.forEach((item,index)=>{
+        item.onclick = function (e) {
+            e.stopPropagation();
+            // console.log( data[this.dataset['name']] )
+            con.innerHTML = data[this.dataset['name']];
+            //console.log( this.dataset['name'] )  // 根据实际需求
+            let str = encodeURI(this.dataset['name'])
+            if( window.history && window.history.pushState ){
+                // H5路由  添加历史 记录
+                window.history.pushState(str,'title','#abc'+str);
+            }
+        }
+    });
+    // PC端演示
+    // 监听浏览器 后退 前进 按钮 改变con的值
+    window.onpopstate = function (e) {
+        //console.log( e.state )
+        if( e.state ){
+            con.innerHTML = data[decodeURI(e.state)]
+        }
+    };
+    window.onhashchange = function () {
+        console.log( decodeURI( window.location.hash ) )
+    };
+
+    window.history.back(); //返回
+    window.history.forward(); //前进
+
+    window.history.go( -1 ); // 返回上一级
+    window.history.go( 1 ); // 前进下一级
+    document.onclick = function () {
+        // window.history.go( 0 ); // 刷新
+        window.location.reload()
+    }
+
+</script>
+</body>
+</html>

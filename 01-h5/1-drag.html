@@ -43,6 +43,21 @@
                 e.dataTransfer.files[0].lastModifiedDate.toLocaleTimeString()
             )
         );
+        //拖住预览
+        let oFile = e.dataTransfer.files[0];
+        //创建文件读取对象
+        let reader = new FileReader();
+        reader.readAsDataURL(oFile); //分析oFile 文件对象
+        reader.onload = function () {
+            console.log( this.result );//返回data:base64 a-z A-Z 0-9 + / =
+            let img = new Image();
+            img.width = 300;
+            img.height = 150;
+            img.src = this.result;
+            img.onload = function () {
+                document.body.appendChild(this);
+            }
+        }
     }
 </script>
 </body>
