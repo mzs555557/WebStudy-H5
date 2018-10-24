@@ -2,11 +2,21 @@
   <dictionary name="Administrator">
     <words>
       <w>asdfghjk</w>
+      <w>clearfix</w>
+      <w>forgetpwd</w>
+      <w>iconfont</w>
+      <w>importent</w>
+      <w>jsonp</w>
       <w>ondragover</w>
       <w>ondrop</w>
       <w>onhashchange</w>
       <w>onload</w>
       <w>onpopstate</w>
+      <w>outputcon</w>
+      <w>regist</w>
+      <w>todoapp</w>
+      <w>todomvc</w>
+      <w>xmlhttp</w>
     </words>
   </dictionary>
 </component>

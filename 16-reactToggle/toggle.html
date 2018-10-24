@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Microsoft yahei", serif;
+        }
+
+        li {
+            list-style-type: none;
+        }
+    </style>
+</head>
+<script src="node_modules/react/umd/react.development.js"></script>
+<script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+<script src="node_modules/babel-standalone/babel.js"></script>
+<body>
+<script type="text/babel">
+    class Wrap extends React.component{
+        constructor(){
+            super();
+        }
+        getData(){
+            return dataList;
+        }
+        render() {
+            console.log(dataList);
+            return (
+                <div>
+                    <h2>标配</h2>
+                    <ul>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>2</li>
+                        <li>1</li>
+                        <li>5</li>
+                    </ul>
+                </div>
+            );
+        }
+    }
+    ReactDOM.render(
+        <Wrap />
+    )
+</script>
+</body>
+</html>

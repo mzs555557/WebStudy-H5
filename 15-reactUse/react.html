@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link href="http://moonbuy.cn/mall/static/images/favicon.ico" rel="shortcut icon" type="image/x-icon">
     <style>
         body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td {
             margin: 0;
@@ -64,7 +66,77 @@
         }
     </style>
 </head>
-<body>
 
+
+<body>
+<div id="app"></div>
+<script src="node_modules/babel-standalone/babel.js"></script>
+<script src="node_modules/react/umd/react.development.js"></script>
+<script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+<script type="text/babel">
+    const header = (
+        <h2>header</h2>
+    );
+    const body = (
+        <h3>body</h3>
+    );
+    const footer = (
+        <h4>footer</h4>
+    );
+    const element = (
+        <div>
+            {header}
+            {body}
+            {footer}
+        </div>
+    );
+
+    function Hd() {
+        return(
+            <h2 className="hd">头部</h2>
+        )
+    }
+    function Con(props){
+        return (
+            <h2 className="main">主体内容 ,{props.name}</h2>
+        )
+    }
+    function Ft() {
+        return (
+            <h2 className="footer">底部</h2>
+        )
+    }
+    class MainCon extends React.Component {
+        constructor() {
+            super();
+            this.state = {
+                name: 'zms'
+            };
+            setTimeout(() => {
+                this.setState({
+                    name: 'mzs'
+                })
+            }, 4000)
+        }
+
+        render(){
+            return(
+                <div>{this.state.name}</div>
+            );
+        }
+    }
+    const element1 = (
+        <div>
+            <MainCon />
+            <Hd />
+            <Ft />
+            <Con name="sda" />
+        </div>
+    );
+    ReactDOM.render(
+        element1,
+        document.querySelector('#app')
+    )
+</script>
 </body>
 </html>

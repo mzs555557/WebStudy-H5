@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="E:/XAMPP/php/PEAR" />
+    </include_path>
+  </component>
+  <component name="PhpProjectServersManager">
+    <servers>
+      <server host="localhost" id="67dd10f8-3976-4b1e-81f8-a8d57424d335" name="config" use_path_mappings="true" />
+    </servers>
+  </component>
+  <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />
 </project>
